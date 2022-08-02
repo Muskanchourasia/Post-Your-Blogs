@@ -1,12 +1,12 @@
-import React from 'react';
-import { withRouter} from "react-router-dom";
+import React from "react";
+
+import { withRouter } from "react-router-dom";
 export class LoginUi extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {email:'',password:''};
+    this.state = { email: "", password: "" };
   }
 
-  
   handleChange1 = (event) => {
     this.setState({ email: event.target.value });
   };
@@ -16,49 +16,55 @@ export class LoginUi extends React.Component {
   };
 
   handleClick = () => {
-    {this.props.history.push("/Nav");}
-  
+    {
+      this.props.history.push("/Nav");
+    }
   };
 
-  render(){
-  return (
-    <div className="main">
-     <div className="sub-main">
-       <div>
-         <div className="imgs">
-           <div className="container-image">
-
-           </div>
-
-
-         </div>
-         <div>
-           <h1>Login Page</h1>
-           <div>
-            
-            <label class="form-label" for="Email">Email address:</label>
-            <br/>
-
-            <input type="text" placeholder="Enter your used ID or email" className="name" onChange={this.handleChange1} />
-         </div>
-            <br/>
-         <div className="second-input">
-            <label class="form-label" for="password">Password:</label>  
-            <br/>
-            <input type="password" placeholder="Enter your password" className="name" onChange={this.handleChange2} />
+  render() {
+    return (
+      <div className="main">
+        <div className="sub-main">
+          <div>
+            <div className="imgs">
+              <div className="container-image"></div>
             </div>
-            <br/>
-            <div className="login-button">
-            
-          <button onClick={this.handleClick}>Login</button>
-          </div>     
- 
-         </div>
-       </div>
-       
+            <div>
+              <h1>Login Page</h1>
+              <div>
+                <label class="form-label" for="Email">
+                  Email address:
+                </label>
+                <br />
 
-     </div>
-    </div>
-  );
-}
+                <input
+                  type="text"
+                  placeholder="Enter your used ID or email"
+                  className="name"
+                  onChange={this.handleChange1}
+                />
+              </div>
+              <br />
+              <div className="second-input">
+                <label class="form-label" for="password">
+                  Password:
+                </label>
+                <br />
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  className="name"
+                  onChange={this.handleChange2}
+                />
+              </div>
+              <br />
+              <div className="login-button">
+                <button onClick={this.handleClick}>Login</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
