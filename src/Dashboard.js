@@ -5,13 +5,17 @@ import Card from "react-bootstrap/Card";
 export class Nav extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { textInput: "", user: [] };
+    this.state = { textInput: "", user: [], flag: 0 };
   }
   handleChange1 = (event) => {
     this.setState({ textInput: [event.target.value] });
     console.log(this.state.user);
   };
 
+  deleteuser = (event) => {
+    this.state.user.splice(event.target.value, 1);
+    this.setState({ flag: 1 });
+  };
   handleClick = () => {
     const { textInput, user } = this.state;
     user.push(textInput);
@@ -19,7 +23,6 @@ export class Nav extends React.Component {
   };
 
   render() {
-    const { user } = this.state;
     return (
       <div>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -67,12 +70,14 @@ export class Nav extends React.Component {
             Post
           </button>
         </div>
-        {this.state.user.map((user) => (
-          <Card style={{ width: "26rem" }}>
+        {this.state.user.map((user, index) => (
+          <Card style={{ width: "26rem", marginLeft: "200px" }}>
             <Card.Body>
               <Card.Title>Post</Card.Title>
               <Card.Text>{user}</Card.Text>
-              <Button variant="danger">Delete</Button>
+              <Button variant="danger" value={index} onClick={this.deleteuser}>
+                Delete
+              </Button>
             </Card.Body>
           </Card>
         ))}
